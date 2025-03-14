@@ -10,11 +10,14 @@ keymap.set("n", "<C-c>", '"+yy')
 keymap.set("n", "<C-z>", "u")
 keymap.set("i", "<C-z>", "<C-o>u")
 
-keymap.set("n", "<C-s>", ":w<CR>", { silent = true })
+keymap.set({ "n", "i" }, "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
+keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true })
+
 keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true })
 keymap.set("n", "<S-Tab>", ":bprev<CR>", { noremap = true, silent = true })
 
 keymap.set("n", "<leader>qq", ":qa<CR>", { desc = "Exit vim" })
+
 -- use jk to exit insert mode
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 

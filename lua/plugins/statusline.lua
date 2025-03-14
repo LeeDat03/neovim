@@ -4,6 +4,16 @@ return {
 	config = function()
 		local MiniStatusline = require("mini.statusline")
 
+		_G.copilot_enabled = false -- Global variable to track Copilot state
+
+		local function copilot_status()
+			if _G.copilot_enabled then
+				return " "
+			else
+				return " "
+			end
+		end
+
 		local function custom_section_location()
 			return "%2l│%-2v" -- Always show "line│column"
 		end
@@ -20,6 +30,7 @@ return {
 					local location = custom_section_location()
 					local fileinfo = MiniStatusline.section_fileinfo({ trunc_width = 120 })
 					local search = MiniStatusline.section_searchcount({ trunc_width = 75 })
+					local copilot = copilot_status()
 
 					return MiniStatusline.combine_groups({
 						{ hl = mode_hl, strings = { mode } },
@@ -27,7 +38,7 @@ return {
 						"%<", -- Mark general truncate point
 						{ hl = "MiniStatuslineFilename", strings = { filename } },
 						"%=", -- End left alignment
-						{ hl = "MiniStatuslineFileinfo", strings = { fileinfo } },
+						{ hl = "MiniStatuslineFileinfo", strings = { copilot, fileinfo } },
 						{ hl = mode_hl, strings = { search, location } },
 					})
 				end,
