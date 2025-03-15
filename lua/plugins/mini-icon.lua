@@ -1,6 +1,6 @@
 return {
 	"echasnovski/mini.icons",
-	lazy = true, -- Ensure it's loaded immediately
+	lazy = true, 
 	priority = 100,
 	version = "*",
 	config = function()
