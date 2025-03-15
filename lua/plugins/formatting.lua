@@ -18,6 +18,8 @@ return {
 				graphql = { "prettier" },
 				liquid = { "prettier" },
 				lua = { "stylua" },
+                svelte = {"prettier"},
+                go = {"gopls"},
 			},
 
 			format_on_save = {

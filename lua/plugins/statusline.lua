@@ -1,6 +1,7 @@
 return {
 	"echasnovski/mini.statusline",
 	version = "*",
+	event = "BufReadPost",
 	config = function()
 		local MiniStatusline = require("mini.statusline")
 
