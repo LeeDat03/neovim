@@ -5,10 +5,12 @@ local keymap = vim.keymap -- for conciseness
 
 ---------------------
 -- General Keymaps -------------------
-keymap.set("v", "<C-c>", '"+y')
-keymap.set("n", "<C-c>", '"+yy')
-keymap.set("n", "<C-z>", "u")
-keymap.set("i", "<C-z>", "<C-o>u")
+keymap.set("v", "<C-c>", '"+y', { noremap = true, silent = true })
+keymap.set("n", "<C-c>", '"+yy', { noremap = true, silent = true })
+keymap.set("n", "<C-z>", "u", { noremap = true, silent = true })
+keymap.set("i", "<C-z>", "<C-o>u", { noremap = true, silent = true })
+-- Select all text in the file
+vim.keymap.set("n", "<C-a>", "ggVG", { noremap = true, silent = true })
 
 keymap.set({ "n", "i" }, "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
 keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true })

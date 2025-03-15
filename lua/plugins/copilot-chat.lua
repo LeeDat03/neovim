@@ -21,6 +21,7 @@ return {
 	{
 		"folke/which-key.nvim",
 		optional = true,
+		lazy = true,
 		opts = {
 			spec = {
 				{ "<leader>a", group = "ai" },
@@ -31,6 +32,7 @@ return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		optional = true,
+		lazy = true,
 		opts = {
 			file_types = { "markdown", "copilot-chat" },
 		},
@@ -40,8 +42,8 @@ return {
 		"CopilotC-Nvim/CopilotChat.nvim",
 		branch = "main",
 		dependencies = {
-			{ "nvim-telescope/telescope.nvim" }, -- Use telescope for help actions
-			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope.nvim", lazy = true }, -- Use telescope for help actions
+			{ "nvim-lua/plenary.nvim", lazy = true },
 		},
 		opts = {
 			question_header = "## User ",
@@ -81,6 +83,7 @@ return {
 				},
 			},
 		},
+		lazy = true,
 		config = function(_, opts)
 			local chat = require("CopilotChat")
 			chat.setup(opts)

@@ -1,7 +1,8 @@
 return {
 	"nvim-tree/nvim-tree.lua",
 	version = "*",
-	lazy = false,
+	event = "BufEnter",
+	cmd = "NvimTreeToggle",
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
 		"sainnhe/sonokai",
@@ -15,7 +16,10 @@ return {
 			filters = {
 				dotfiles = true,
 			},
+			disable_netrw = true,
+			hijack_netrw = true,
 		})
+
 		vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>", { silent = true })
 	end,
 }
