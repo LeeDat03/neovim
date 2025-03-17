@@ -1,6 +1,6 @@
 return {
 	"polirritmico/monokai-nightasty.nvim",
-	lazy = true,
+	-- lazy = true,
 	event = "VimEnter",
 	priority = 1000,
 	config = function()

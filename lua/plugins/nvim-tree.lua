@@ -3,9 +3,7 @@ return {
 	version = "*",
 	cmd = "NvimTreeToggle",
 	lazy = true,
-	dependencies = {
-		{ "nvim-tree/nvim-web-devicons", lazy = true },
-	},
+	keys = { "<leader>e" },
 	config = function()
 		require("nvim-tree").setup({
 			view = {
@@ -24,6 +22,6 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>ee", ":NvimTreeToggle<CR>", { silent = true })
+		vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { silent = true })
 	end,
 }

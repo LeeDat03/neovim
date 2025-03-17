@@ -6,11 +6,6 @@ return {
 		require("tiny-inline-diagnostic").setup({
 			options = {
 				show_source = true,
-				multilines = {
-					enabled = true, -- Enable multiline diagnostics
-					always_show = true, -- Always show diagnostics on all lines
-				},
-				show_all_diags_on_cursorline = true, -- Show all diagnostics on the cursor line
 				break_line = {
 					enabled = true,
 					after = 80, -- Break lines after 80 characters

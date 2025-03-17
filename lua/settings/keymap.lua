@@ -1,43 +1,57 @@
--- set leader key to space
+-- Set leader key to space
 vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 
----------------------
--- General Keymaps -------------------
-keymap.set("v", "<C-c>", '"+y', { noremap = true, silent = true })
-keymap.set("n", "<C-c>", '"+yy', { noremap = true, silent = true })
-keymap.set("n", "<C-z>", "u", { noremap = true, silent = true })
-keymap.set("i", "<C-z>", "<C-o>u", { noremap = true, silent = true })
--- Select all text in the file
-vim.keymap.set("n", "<C-a>", "ggVG", { noremap = true, silent = true })
+----------------------- General Keymaps -------------------
+-- Window navigation
+keymap.set("n", "<C-k>", ":wincmd k<CR>", { silent = true, desc = "Go up" })
+keymap.set("n", "<C-j>", ":wincmd j<CR>", { silent = true, desc = "Go down" })
+keymap.set("n", "<C-h>", ":wincmd h<CR>", { silent = true, desc = "Go left" })
+keymap.set("n", "<C-l>", ":wincmd l<CR>", { silent = true, desc = "Go right" })
 
-keymap.set({ "n", "i" }, "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
-keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true })
+-- Copy & paste
+keymap.set("v", "<C-c>", '"+y', { noremap = true, silent = true, desc = "Copy" })
+keymap.set("n", "<C-c>", '"+yy', { noremap = true, silent = true, desc = "Copy line" })
+keymap.set("n", "<C-v>", '"+p', { noremap = true, silent = true, desc = "Paste" })
+keymap.set("i", "<C-v>", "<C-r>+", { noremap = true, silent = true, desc = "Paste in insert mode" })
 
-keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true })
-keymap.set("n", "<S-Tab>", ":bprev<CR>", { noremap = true, silent = true })
+-- Undo
+keymap.set("n", "<C-z>", "u", { noremap = true, silent = true, desc = "Undo" })
+keymap.set("i", "<C-z>", "<C-o>u", { noremap = true, silent = true, desc = "Undo in insert mode" })
 
-keymap.set("n", "<leader>qq", ":qa<CR>", { desc = "Exit vim" })
+-- Select all
+keymap.set("n", "<C-a>", "ggVG", { noremap = true, silent = true, desc = "Select all" })
 
--- use jk to exit insert mode
-keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+-- Save file
+keymap.set({ "n", "i" }, "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true, desc = "Save file" })
 
--- clear search highlights
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+-- Delete word
+keymap.set("i", "<C-H>", "<C-w>", { noremap = true, silent = true, desc = "Delete word" })
 
--- increment/decrement numbers
-keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
-keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
+-- Select line
+keymap.set("n", "<CR>", "V", { noremap = true, silent = true, desc = "Select line" })
 
--- window management
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
-keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+-- Move line
+keymap.set("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true, desc = "Move line up" })
+keymap.set("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true, desc = "Move line down" })
 
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
-keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+-- Buffer navigation
+keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true, desc = "Next buffer" })
+keymap.set("n", "<S-Tab>", ":bprev<CR>", { noremap = true, silent = true, desc = "Prev buffer" })
+
+-- Quit Neovim
+keymap.set("n", "<C-q>", ":qa<CR>", { desc = "Quit Neovim" })
+
+-- Clear search highlights
+keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear highlights" })
+
+-- Window management
+keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split vertical" })
+keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split horizontal" })
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "Equal split size" })
+keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
+
+-- Comment
+vim.api.nvim_set_keymap("n", "<C-_>", "gcc", { noremap = false, silent = true })
+vim.api.nvim_set_keymap("v", "<C-_>", "gc", { noremap = false, silent = true })

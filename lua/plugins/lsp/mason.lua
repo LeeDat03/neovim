@@ -2,7 +2,7 @@ return {
 	"williamboman/mason.nvim",
 	dependencies = {
 		{ "williamboman/mason-lspconfig.nvim", lazy = true },
-		{"WhoIsSethDaniel/mason-tool-installer.nvim", lazy = true},
+		{ "WhoIsSethDaniel/mason-tool-installer.nvim", lazy = true },
 	},
 	event = "VeryLazy",
 	cmd = "Mason",
@@ -24,6 +24,8 @@ return {
 				-- "graphql",
 				-- "prismals",
 				-- "jdtls",
+				-- "clangd",
+				-- "gopls",
 			},
 		})
 

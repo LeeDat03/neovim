@@ -19,17 +19,6 @@ local prompts = {
 
 return {
 	{
-		"folke/which-key.nvim",
-		optional = true,
-		lazy = true,
-		opts = {
-			spec = {
-				{ "<leader>a", group = "ai" },
-				{ "<leader>gm", group = "Copilot Chat" },
-			},
-		},
-	},
-	{
 		"MeanderingProgrammer/render-markdown.nvim",
 		optional = true,
 		lazy = true,
@@ -88,17 +77,11 @@ return {
 			local chat = require("CopilotChat")
 			chat.setup(opts)
 
-			-- Keybinding to prompt for input and call CopilotChatNoContext
-			vim.keymap.set("n", "<leader>an", function()
-				local input = vim.fn.input("Ask Copilot (No Context): ")
-				if input ~= "" then
-					vim.cmd("CopilotChatNoContext " .. vim.fn.shellescape(input))
-				end
-			end, { desc = "CopilotChat - Ask without using any context" })
-
 			local select = require("CopilotChat.select")
 			vim.api.nvim_create_user_command("CopilotChatVisual", function(args)
-				chat.ask(args.args, { selection = select.visual })
+				chat.ask(args.args, {
+					selection = select.visual,
+				})
 			end, { nargs = "*", range = true })
 
 			-- Inline chat with Copilot

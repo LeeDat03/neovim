@@ -2,44 +2,33 @@ return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"L3MON4D3/LuaSnip",
-		"saadparwaiz1/cmp_luasnip",
-		"rafamadriz/friendly-snippets",
-		"onsails/lspkind.nvim",
-		-- "zbirenbaum/copilot-cmp",
+		{ "hrsh7th/cmp-nvim-lsp", lazy = true }, -- LSP source for nvim-cmp
+		{ "hrsh7th/cmp-buffer", lazy = true }, -- Buffer source for nvim-cmp
+		{ "hrsh7th/cmp-path", lazy = true }, -- Path source for nvim-cmp
+		{ "zbirenbaum/copilot-cmp" },
 	},
 	config = function()
 		local cmp = require("cmp")
-		local luasnip = require("luasnip")
-
-		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
-			completion = { completeopt = "menu,menuone,preview,noselect" },
-			snippet = {
-				expand = function(args)
-					luasnip.lsp_expand(args.body)
-				end,
-			},
+			completion = { completeopt = "menu,menuone,preview,noselect" }, -- Completion options
 			mapping = cmp.mapping.preset.insert({
-				["<Tab>"] = cmp.mapping.select_next_item(),
-				["<S-Tab>"] = cmp.mapping.select_prev_item(),
-				["<C-b>"] = cmp.mapping.scroll_docs(-4),
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(), -- Manually trigger completion
-				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = true }),
+				["<Tab>"] = cmp.mapping.select_next_item(), -- Navigate to next item
+				["<S-Tab>"] = cmp.mapping.select_prev_item(), -- Navigate to previous item
+				["<C-b>"] = cmp.mapping.scroll_docs(-4), -- Scroll documentation up
+				["<C-f>"] = cmp.mapping.scroll_docs(4), -- Scroll documentation down
+				["<C-Space>"] = cmp.mapping.complete(), -- Trigger completion manually
+				["<C-e>"] = cmp.mapping.abort(), -- Abort completion
+				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Confirm selection
 			}),
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp", group_index = 1 }, -- LSP results come first
-				-- { name = "copilot", group_index = 2 }, -- Copilot results come after LSP
-				{ name = "luasnip", group_index = 2 }, -- Snippets are grouped with Copilot
-				{ name = "buffer", group_index = 3 }, -- Buffer completion appears after Copilot
-				{ name = "path", group_index = 3 }, -- Path completion appears last
+				{ name = "nvim_lsp" }, -- LSP completions
+				{ name = "copilot", group_index = 2 }, -- Copilot completions
+				{ name = "luasnip" }, -- Snippet completions
+				{ name = "buffer" }, -- Buffer completions
+				{ name = "path" }, -- Path completions
 			}),
-			experimental = { ghost_text = true },
+			-- experimental = { ghost_text = true }, -- Enable ghost text
 		})
 	end,
 }

@@ -1,3 +1,9 @@
 {
-    "completion.autoRequire": false
+    "completion.autoRequire": false,
+    "diagnostics.disable": [
+        "assign-type-mismatch"
+    ],
+    "diagnostics.globals": [
+        "vim"
+    ]
 }

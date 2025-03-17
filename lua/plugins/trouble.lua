@@ -1,8 +1,8 @@
 return {
 	"folke/trouble.nvim",
-	opts = {}, -- for default options, refer to the configuration section for custom setup.
 	cmd = "Trouble",
 	event = "VeryLazy",
+	opts = {},
 	keys = {
 		{
 			"<leader>xx",
@@ -15,12 +15,12 @@ return {
 			desc = "Buffer Diagnostics (Trouble)",
 		},
 		{
-			"<leader>cs",
+			"<leader>xs",
 			"<cmd>Trouble symbols toggle focus=false<cr>",
 			desc = "Symbols (Trouble)",
 		},
 		{
-			"<leader>sl",
+			"<leader>xl",
 			"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
 			desc = "LSP Definitions / references / ... (Trouble)",
 		},
@@ -33,6 +33,11 @@ return {
 			"<leader>xQ",
 			"<cmd>Trouble qflist toggle<cr>",
 			desc = "Quickfix List (Trouble)",
+		},
+		{
+			"x",
+			"<cmd>Trouble<cr>",
+			desc = "Show Trouble",
 		},
 	},
 }
