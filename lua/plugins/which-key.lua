@@ -8,10 +8,11 @@ return {
 	opts = {
 		spec = {
 			{ "<leader>a", group = "ai" },
-			{ "<leader>gm", group = "Copilot Chat" },
 			{ "<leader>x", group = "Trouble" },
 			{ "<leader>f", group = "Telescope" },
 			{ "<leader>s", group = "Split" },
+			{ "<leader>d", group = "Diffview" },
+			{ "<leader>g", group = "Gitsigns" },
 		},
 	},
 }

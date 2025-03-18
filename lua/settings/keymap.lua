@@ -55,3 +55,47 @@ keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close split" })
 -- Comment
 vim.api.nvim_set_keymap("n", "<C-_>", "gcc", { noremap = false, silent = true })
 vim.api.nvim_set_keymap("v", "<C-_>", "gc", { noremap = false, silent = true })
+
+-- Normal mode mappings for line navigation
+keymap.set("n", "<Down>", "gj", { noremap = true, silent = true })
+keymap.set("n", "<Up>", "gk", { noremap = true, silent = true })
+
+-- Insert mode mappings for line navigation
+keymap.set("i", "<Down>", "<C-o>gj", { noremap = true, silent = true })
+keymap.set("i", "<Up>", "<C-o>gk", { noremap = true, silent = true })
+
+-- Visual mode mappings for line navigation
+keymap.set("v", "<Down>", "gj", { noremap = true, silent = true })
+keymap.set("v", "<Up>", "gk", { noremap = true, silent = true })
+
+----------------------- Git -------------------
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>do",
+	":DiffviewOpen<CR>",
+	{ noremap = true, silent = true, desc = "Open Diffview to review changes" }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>dc",
+	":DiffviewClose<CR>",
+	{ noremap = true, silent = true, desc = "Close Diffview" }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>dr",
+	":DiffviewRefresh<CR>",
+	{ noremap = true, silent = true, desc = "Refresh Diffview" }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>dh",
+	":DiffviewFileHistory<CR>",
+	{ noremap = true, silent = true, desc = "Open Git file history" }
+)
+vim.api.nvim_set_keymap(
+	"n",
+	"<leader>dhf",
+	":DiffviewFileHistory %<CR>",
+	{ noremap = true, silent = true, desc = "Open Git file history for current file" }
+)

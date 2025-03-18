@@ -23,8 +23,8 @@ return {
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" }, -- LSP completions
-				{ name = "copilot", group_index = 2 }, -- Copilot completions
-				{ name = "luasnip" }, -- Snippet completions
+				{ name = "copilot" }, -- Copilot completions
+				-- { name = "luasnip" }, -- Snippet completions
 				{ name = "buffer" }, -- Buffer completions
 				{ name = "path" }, -- Path completions
 			}),

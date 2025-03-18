@@ -10,6 +10,8 @@ return {
 				typescript = { "prettier" },
 				javascriptreact = { "prettier" },
 				typescriptreact = { "prettier" },
+				tsx = { "prettier" },
+				jsx = { "prettier" },
 				css = { "prettier" },
 				html = { "prettier" },
 				json = { "prettier" },
@@ -18,8 +20,8 @@ return {
 				graphql = { "prettier" },
 				liquid = { "prettier" },
 				lua = { "stylua" },
-                svelte = {"prettier"},
-                go = {"gopls"},
+        svelte = {"prettier"},
+        go = {"gopls"},
 			},
 
 			format_on_save = {
