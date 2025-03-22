@@ -5,7 +5,7 @@ return {
 	config = function()
 		local MiniStatusline = require("mini.statusline")
 
-		_G.copilot_enabled = false -- Global variable to track Copilot state
+		_G.copilot_enabled = true -- Global variable to track Copilot state
 
 		local function copilot_status()
 			if _G.copilot_enabled then
@@ -28,7 +28,7 @@ return {
 					local diagnostics = MiniStatusline.section_diagnostics({ trunc_width = 75 })
 					local lsp = MiniStatusline.section_lsp({ trunc_width = 75 })
 
-					local filename = MiniStatusline.section_filename({ trunc_width = 100 })
+					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(0), ":.")
 					local fileinfo = vim.bo.filetype ~= "" and vim.bo.filetype:lower() or ""
 
 					local location = custom_section_location()

@@ -12,7 +12,6 @@ return {
 			{ "<leader>f", group = "Telescope" },
 			{ "<leader>s", group = "Split" },
 			{ "<leader>d", group = "Diffview" },
-			{ "<leader>g", group = "Gitsigns" },
 		},
 	},
 }

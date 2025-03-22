@@ -9,7 +9,7 @@ return {
 		config = function()
 			require("copilot").setup({
 				suggestion = {
-					auto_trigger = false, -- Only suggest when a key is pressed
+					auto_trigger = true, -- Only suggest when a key is pressed
 					keymap = {
 						accept = "<C-y>",
 						next = "<C-t>",
@@ -18,6 +18,10 @@ return {
 					},
 				},
 			})
+
+			if _G.copilot_enabled == nil then
+				_G.copilot_enabled = true
+			end
 
 			vim.keymap.set("n", "<leader>ct", function()
 				_G.copilot_enabled = not _G.copilot_enabled -- Toggle the state
